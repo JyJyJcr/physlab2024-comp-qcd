@@ -2,4 +2,4 @@
 
 Physlab2024の格子QCDに係る諸々
 
-- [リンク集](docs/links.md)
+- [リンク集](docs/qcd/links.md)
