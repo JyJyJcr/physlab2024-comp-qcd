@@ -45,7 +45,7 @@ impl<const X: SI, const Y: SI, const Z: SI, const T: SI> StateTheos<QCDState<X, 
 }
 
 use clap::Parser;
-use ndarray_linalg::krylov::householder::calc_reflector;
+
 /// `qcd`モジュールのオプション
 #[derive(Parser, Debug)]
 pub struct Opt {
