@@ -1,4 +1,4 @@
-use crate::{capacity::*, monte::*};
+use crate::{build_env_SI, capacity::*, monte::*};
 use ndarray::*;
 /// QCDの状態(3空間+1虚時間の4次元)
 struct QCDState<const X: SI, const Y: SI, const Z: SI, const T: SI> {
@@ -45,6 +45,7 @@ impl<const X: SI, const Y: SI, const Z: SI, const T: SI> StateTheos<QCDState<X, 
 }
 
 use clap::Parser;
+use ndarray_linalg::krylov::householder::calc_reflector;
 /// `qcd`モジュールのオプション
 #[derive(Parser, Debug)]
 pub struct Opt {
@@ -59,15 +60,17 @@ struct Conf {
     z: SI,
     t: SI,
 }
+
 /// `qcd`モジュールのコンフィグ定数(コンパイル時設定)
 const CONF: Conf = Conf {
-    x: 10,
-    y: 10,
-    z: 10,
-    t: 10,
+    x: build_env_SI!("QCD_X", 10),
+    y: build_env_SI!("QCD_Y", 10),
+    z: build_env_SI!("QCD_Z", 10),
+    t: build_env_SI!("QCD_T", 10),
 };
 /// `qcd`モジュールのシミュレーション実行
 pub fn run(opt: Opt) -> Result<(), TheosFail> {
+    println!("{}", CONF.x);
     let th = QCDTheos::<{ CONF.x }, { CONF.y }, { CONF.z }, { CONF.t }>::new(1.0e-8);
     let mut s = th.generate()?;
     for _ in 1..opt.steps {
