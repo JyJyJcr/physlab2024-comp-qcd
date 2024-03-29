@@ -598,6 +598,7 @@ dependencies = [
  "konst",
  "ndarray",
  "ndarray-linalg",
+ "rand",
 ]
 
 [[package]]

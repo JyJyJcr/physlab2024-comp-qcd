@@ -32,12 +32,12 @@ impl<const X: SI, const Y: SI, const Z: SI, const T: SI> StateTheos<QCDState<X, 
     for QCDTheos<X, Y, Z, T>
 {
     /// `QCDState`の生成、今は真空を返す
-    fn generate(&self) -> Result<QCDState<X, Y, Z, T>, TheosFail> {
+    fn generate(&mut self) -> Result<QCDState<X, Y, Z, T>, TheosFail> {
         Ok(QCDState::zeros())
     }
 
     /// `QCDState`の擬時間発展、今は何もしない
-    fn next(&self, s: &mut QCDState<X, Y, Z, T>) -> Result<(), TheosFail> {
+    fn next(&mut self, s: &mut QCDState<X, Y, Z, T>) -> Result<(), TheosFail> {
         //currently do nothing
         Ok(())
         //Err(TheosFail)
@@ -70,7 +70,7 @@ const CONF: Conf = Conf {
 };
 /// `qcd`モジュールのシミュレーション実行
 pub fn run(opt: Opt) -> Result<(), TheosFail> {
-    let th = QCDTheos::<{ CONF.x }, { CONF.y }, { CONF.z }, { CONF.t }>::new(1.0e-8);
+    let mut th = QCDTheos::<{ CONF.x }, { CONF.y }, { CONF.z }, { CONF.t }>::new(1.0e-8);
     let mut s = th.generate()?;
     for _ in 1..opt.steps {
         th.next(&mut s)?;
