@@ -45,7 +45,7 @@ impl<const X: SI, const Y: SI, const Z: SI, const T: SI> StateTheos<QCDState<X, 
 }
 
 use clap::Parser;
-use ndarray_linalg::krylov::householder::calc_reflector;
+
 /// `qcd`モジュールのオプション
 #[derive(Parser, Debug)]
 pub struct Opt {
@@ -70,7 +70,6 @@ const CONF: Conf = Conf {
 };
 /// `qcd`モジュールのシミュレーション実行
 pub fn run(opt: Opt) -> Result<(), TheosFail> {
-    println!("{}", CONF.x);
     let th = QCDTheos::<{ CONF.x }, { CONF.y }, { CONF.z }, { CONF.t }>::new(1.0e-8);
     let mut s = th.generate()?;
     for _ in 1..opt.steps {
