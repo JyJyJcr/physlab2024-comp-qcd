@@ -70,7 +70,6 @@ const CONF: Conf = Conf {
 };
 /// `qcd`モジュールのシミュレーション実行
 pub fn run(opt: Opt) -> Result<(), TheosFail> {
-    println!("{}", CONF.x);
     let th = QCDTheos::<{ CONF.x }, { CONF.y }, { CONF.z }, { CONF.t }>::new(1.0e-8);
     let mut s = th.generate()?;
     for _ in 1..opt.steps {

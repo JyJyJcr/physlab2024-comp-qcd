@@ -16,8 +16,3 @@ macro_rules! build_env_SI {
         }
     };
 }
-
-#[macro_export]
-macro_rules! foo {
-    () => {};
-}
