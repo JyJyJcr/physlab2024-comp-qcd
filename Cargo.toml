@@ -9,3 +9,4 @@ edition = "2021"
 clap = { version = "4.5.4", features = ["derive"] }
 ndarray = "0.15.6"
 ndarray-linalg = { version = "0.16.0", features = ["openblas-system"] }
+rand = "0.8.5"

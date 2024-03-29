@@ -1,5 +1,6 @@
 mod capacity;
 mod monte;
+mod ising;
 mod qcd;
 
 //このモジュールはndarrayの調子の確認用なので、いずれ排除
@@ -16,9 +17,9 @@ struct Cli {
 #[derive(Subcommand, Debug)]
 /// サブモジュールに割り振り
 enum Commands {
-    /// Isingの計算
-    Ising(qcd::Opt),
-    /// QCDの計算
+    /// Ising
+    Ising(ising::Opt),
+    /// QCD
     QCD(qcd::Opt),
 }
 
@@ -26,7 +27,7 @@ enum Commands {
 fn main() {
     let cli = Cli::parse();
     match cli.command {
-        Commands::Ising(opt) => qcd::run(opt).unwrap(),
+        Commands::Ising(opt) => ising::run(opt).unwrap(),
         Commands::QCD(opt) => qcd::run(opt).unwrap(),
     };
 }

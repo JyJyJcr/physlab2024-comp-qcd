@@ -564,6 +564,7 @@ dependencies = [
  "clap",
  "ndarray",
  "ndarray-linalg",
+ "rand",
 ]
 
 [[package]]
