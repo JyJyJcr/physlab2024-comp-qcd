@@ -4,7 +4,7 @@ use ndarray::*;
 struct QCDState<const X: SI, const Y: SI, const Z: SI, const T: SI> {
     /// クォーク場
     f: Array4<FL>,
-    /// グルーオン場
+    /// ゲージ場
     u: Array4<FL>,
 }
 impl<const X: SI, const Y: SI, const Z: SI, const T: SI> QCDState<X, Y, Z, T> {

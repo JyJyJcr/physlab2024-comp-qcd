@@ -1,5 +1,4 @@
-#[test]
-fn test_lin() {
+pub fn test_lin() {
     println!("test ndarray-linalg!");
     println!("solve {}", solve().unwrap());
     println!("factorize {}", factorize().unwrap());

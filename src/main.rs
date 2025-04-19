@@ -1,6 +1,6 @@
 mod capacity;
-mod monte;
 mod ising;
+mod monte;
 mod qcd;
 
 //このモジュールはndarrayの調子の確認用なので、いずれ排除
@@ -21,6 +21,7 @@ enum Commands {
     Ising(ising::Opt),
     /// QCD
     QCD(qcd::Opt),
+    TestLin,
 }
 
 /// コマンドライン引数を読んでサブモジュールを実行
@@ -29,5 +30,6 @@ fn main() {
     match cli.command {
         Commands::Ising(opt) => ising::run(opt).unwrap(),
         Commands::QCD(opt) => qcd::run(opt).unwrap(),
+        Commands::TestLin => test_linalg::test_lin(),
     };
 }
